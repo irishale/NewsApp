@@ -15,11 +15,11 @@ class URLSessionManager {
                                       success: @escaping (_ model: T) -> Void,
                                       failure: @escaping (_ error: Error?) -> Void) {
         defaultSession.dataTask(with: url) { data, response, error in
+            
             do {
                 if let data = data {
-                    let decoder = JSONDecoder()
-                    let model = try decoder.decode(T.self, from:
-                        data)
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    let model = try T(from: json)
                     success(model)
                 }
             } catch let parsingError {

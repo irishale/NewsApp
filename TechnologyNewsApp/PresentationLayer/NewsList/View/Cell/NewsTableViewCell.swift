@@ -10,9 +10,19 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
+    // MARK: Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    func configure(withViewModel viewModel: Any) {
+        
+    }
+    
+    // MARK: Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        selectionStyle = .none
     }
 
 }

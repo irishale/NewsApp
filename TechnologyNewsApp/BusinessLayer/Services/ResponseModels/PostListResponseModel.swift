@@ -1,5 +1,5 @@
 //
-//  NewsRepository.swift
+//  PostList.swift
 //  TechnologyNewsApp
 //
 //  Created by IrishAle on 10/10/2019.
@@ -8,12 +8,6 @@
 
 import Foundation
 
-class NewsRepository {
-    func fetchAll() {
-        
-    }
-    
-    func fetchById() {
-        
-    }
+struct PostListResponseModel: Codable {
+    let posts: [PostResponseModel]
 }

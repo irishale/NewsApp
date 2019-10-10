@@ -14,15 +14,26 @@ class NewsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Injections
-    lazy var tableViewManager = NewsListTableViewManager(tableView: tableView)
+    var tableViewManager: NewsListTableViewManager!
+    lazy var presenter: NewsListPresenterProtocol = NewsListPresenter(view: self)
     
     // MARK: Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.fetchNewsList()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableViewManager = NewsListTableViewManager(tableView: tableView)
     }
 
 }
 
 extension NewsListViewController: NewsListViewProtocol {
-    
+    func updateTable(viewModels: [Any]) {
+        self.tableViewManager.configure(viewModels: viewModels)
+    }
 }
