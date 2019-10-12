@@ -15,21 +15,26 @@ class NewsListViewController: UIViewController {
     
     // MARK: Injections
     var tableViewManager: NewsListTableViewManager!
-    lazy var presenter: NewsListPresenterProtocol = NewsListPresenter(view: self)
+    var presenter: NewsListPresenterProtocol!
     
     // MARK: Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.fetchNewsList()
+        tableViewManager = NewsListTableViewManager(tableView: tableView)
+        presenter = NewsListPresenter(view: self)
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewManager = NewsListTableViewManager(tableView: tableView)
     }
 
+    @IBAction func click(_ sender: Any) {
+        presenter.fetchNewsList()
+    }
 }
 
 extension NewsListViewController: NewsListViewProtocol {

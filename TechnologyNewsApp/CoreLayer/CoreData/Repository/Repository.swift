@@ -22,6 +22,8 @@ protocol Repository {
     
     func fetchAll() -> [Entity]
     
+    func fetchByPage(page: Int) -> [Entity]
+    
     func fetchById(objectId: String?) -> Entity?
     
     func create(withModel model: Model) -> Entity?

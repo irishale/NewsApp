@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 final class CoreDataRepository<GenericEntity: NSManagedObject & ConfigurableEntityProtocol, GenericModel: IdentityModelProtocol>: Repository {
- 
+
     typealias Entity = GenericEntity
     typealias Model = GenericModel
     
@@ -28,6 +28,28 @@ final class CoreDataRepository<GenericEntity: NSManagedObject & ConfigurableEnti
         guard let entities = GenericEntity.mr_findAll() as? [GenericEntity] else { return [] }
         
         return entities
+    }
+    
+    func fetchByPage(page: Int) -> [GenericEntity] {
+        let limit = 10
+        let offset = page*limit
+        
+        let entityDescription = NSEntityDescription.entity(forEntityName: NSStringFromClass(GenericEntity.self), in: context)
+        
+        let request: NSFetchRequest<GenericEntity> = NSFetchRequest()
+        request.entity = entityDescription
+        request.fetchOffset = offset
+        request.fetchLimit = limit
+        
+        do {
+            // дебажить принтами
+            // LLDP падает, если ставить точку останова
+            let entities = try context.fetch(request)
+            return entities
+        } catch {
+            print("Failed to fetch: \(error)")
+            return []
+        }
     }
     
     func fetchById(objectId: String?) -> GenericEntity? {

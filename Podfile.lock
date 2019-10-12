@@ -2,21 +2,25 @@ PODS:
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
+  - ReachabilitySwift (4.3.1)
   - UIScrollView-InfiniteScroll (1.1.0)
 
 DEPENDENCIES:
   - MagicalRecord
+  - ReachabilitySwift
   - UIScrollView-InfiniteScroll (~> 1.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - MagicalRecord
+    - ReachabilitySwift
     - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
 
-PODFILE CHECKSUM: 2e1b1924ebf9543e4953e531574a6f70a05b4e67
+PODFILE CHECKSUM: fad572b0ede2bc017850a3a7cfc9f6460203acf5
 
 COCOAPODS: 1.7.5

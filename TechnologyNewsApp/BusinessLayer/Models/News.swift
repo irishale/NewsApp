@@ -36,7 +36,7 @@ class News: IdentityModelProtocol {
     
     init(withEntity entity: NewsEntity) {
         title = entity.title ?? ""
-        published  = entity.publishedDate! as Date
+        published  = entity.publishedDate as? Date
         author = entity.author ?? ""
         text = entity.content ?? ""
         imageData = entity.image as Data?
