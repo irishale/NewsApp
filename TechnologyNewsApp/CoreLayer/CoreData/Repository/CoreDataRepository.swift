@@ -31,7 +31,7 @@ final class CoreDataRepository<GenericEntity: NSManagedObject & ConfigurableEnti
     }
     
     func fetchByPage(page: Int) -> [GenericEntity] {
-        let limit = 10
+        let limit = 20
         let offset = page*limit
         
         let entityDescription = NSEntityDescription.entity(forEntityName: NSStringFromClass(GenericEntity.self), in: context)

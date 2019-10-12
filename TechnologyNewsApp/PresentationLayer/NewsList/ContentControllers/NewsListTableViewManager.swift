@@ -16,7 +16,7 @@ class NewsListTableViewManager: NSObject {
     
     // MARK: Properties
     var tableView: UITableView!
-    private var viewModels: [Any]?
+    private var viewModels: [NewsPreviewViewModel]? = []
     
     init(tableView: UITableView) {
         self.tableView = tableView
@@ -33,25 +33,45 @@ class NewsListTableViewManager: NSObject {
         }
     }
     
-    func configure(viewModels: [Any]) {
+    func configure(viewModels: [NewsPreviewViewModel]) {
         self.viewModels = viewModels
         self.tableView.reloadData()
     }
     
+    func addRows(viewModels: [NewsPreviewViewModel]?) {
+        if self.viewModels?.count == 0 {
+            self.viewModels = viewModels
+            self.tableView.reloadData()
+        } else {
+            tableView.beginUpdates()
+            
+            guard let unwrappedCurrentViewModels = self.viewModels else { return }
+            let row = unwrappedCurrentViewModels.count - 1
+            
+            guard let unwrappedUpdatedViewModels = viewModels else { return }
+            
+            var indexPaths = [IndexPath]()
+            for (index, _) in unwrappedUpdatedViewModels.enumerated() {
+                if index >= row && index < unwrappedUpdatedViewModels.count - 1 {
+                    indexPaths.append(IndexPath(row: index, section: 0))
+                }
+            }
+            
+            self.viewModels = viewModels
+            
+            tableView.insertRows(at: indexPaths, with: .automatic)
+            tableView.endUpdates()
+        }
+    }
 }
 
 extension NewsListTableViewManager: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        switch cell {
-        case is NewsTableViewCell:
-            let unwrappedCell = cell as! NewsTableViewCell
-            if let viewModel = viewModels?[indexPath.row] {
-                unwrappedCell.configure(withViewModel: viewModel)
-            }
-        default:
-            return
-        }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
@@ -62,10 +82,17 @@ extension NewsListTableViewManager: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        
+        switch cell {
+        case is NewsTableViewCell:
+            let unwrappedCell = cell as! NewsTableViewCell
+            if let viewModel = viewModels?[indexPath.row] {
+                unwrappedCell.configure(withViewModel: viewModel)
+            }
+        default:
+            break
+        }
+        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }

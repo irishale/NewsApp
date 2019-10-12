@@ -10,4 +10,6 @@ import Foundation
 
 protocol NewsListPresenterProtocol: class {
     func fetchNewsList()
+    
+    func incrementPageNumber()
 }

@@ -29,14 +29,16 @@ class News: IdentityModelProtocol {
         self.imageData = imageData
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let posix = Locale(identifier: "ru_RU_POSIX")
+        dateFormatter.locale = posix
         
         self.published = dateFormatter.date(from: publishedString)
     }
     
     init(withEntity entity: NewsEntity) {
         title = entity.title ?? ""
-        published  = entity.publishedDate as? Date
+        published  = entity.publishedDate as Date?
         author = entity.author ?? ""
         text = entity.content ?? ""
         imageData = entity.image as Data?
