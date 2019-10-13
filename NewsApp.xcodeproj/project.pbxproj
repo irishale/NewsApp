@@ -47,7 +47,7 @@
 		332073A3BDDA3410443A0269 /* Pods-TechnologyNewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechnologyNewsApp.release.xcconfig"; path = "Target Support Files/Pods-TechnologyNewsApp/Pods-TechnologyNewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		4A5CFC6A49C6F7F0F459315F /* Pods_TechnologyNewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TechnologyNewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B590A697838D9A7227C4352 /* Pods-TechnologyNewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechnologyNewsApp.debug.xcconfig"; path = "Target Support Files/Pods-TechnologyNewsApp/Pods-TechnologyNewsApp.debug.xcconfig"; sourceTree = "<group>"; };
-		91008A08234EA00F0089458E /* TechnologyNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechnologyNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91008A08234EA00F0089458E /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91008A0B234EA00F0089458E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91008A13234EA00F0089458E /* TechnologyNewsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TechnologyNewsApp.xcdatamodel; sourceTree = "<group>"; };
 		91008A15234EA0110089458E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		91008A09234EA00F0089458E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91008A08234EA00F0089458E /* TechnologyNewsApp.app */,
+				91008A08234EA00F0089458E /* NewsApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,9 +361,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91008A07234EA00F0089458E /* TechnologyNewsApp */ = {
+		91008A07234EA00F0089458E /* NewsApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91008A1D234EA0110089458E /* Build configuration list for PBXNativeTarget "TechnologyNewsApp" */;
+			buildConfigurationList = 91008A1D234EA0110089458E /* Build configuration list for PBXNativeTarget "NewsApp" */;
 			buildPhases = (
 				F880AA307ECBC120C4CE6640 /* [CP] Check Pods Manifest.lock */,
 				91008A04234EA00F0089458E /* Sources */,
@@ -375,9 +375,9 @@
 			);
 			dependencies = (
 			);
-			name = TechnologyNewsApp;
+			name = NewsApp;
 			productName = TechnologyNewsApp;
-			productReference = 91008A08234EA00F0089458E /* TechnologyNewsApp.app */;
+			productReference = 91008A08234EA00F0089458E /* NewsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -395,7 +395,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 91008A03234EA00F0089458E /* Build configuration list for PBXProject "TechnologyNewsApp" */;
+			buildConfigurationList = 91008A03234EA00F0089458E /* Build configuration list for PBXProject "NewsApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -408,7 +408,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91008A07234EA00F0089458E /* TechnologyNewsApp */,
+				91008A07234EA00F0089458E /* NewsApp */,
 			);
 		};
 /* End PBXProject section */
@@ -677,7 +677,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		91008A03234EA00F0089458E /* Build configuration list for PBXProject "TechnologyNewsApp" */ = {
+		91008A03234EA00F0089458E /* Build configuration list for PBXProject "NewsApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91008A1B234EA0110089458E /* Debug */,
@@ -686,7 +686,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91008A1D234EA0110089458E /* Build configuration list for PBXNativeTarget "TechnologyNewsApp" */ = {
+		91008A1D234EA0110089458E /* Build configuration list for PBXNativeTarget "NewsApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91008A1E234EA0110089458E /* Debug */,
