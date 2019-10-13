@@ -11,5 +11,9 @@ import Foundation
 protocol NewsListPresenterProtocol: class {
     func fetchNewsList()
     
+    func fetchNews(byIndex: Int) -> News?
+    
     func incrementPageNumber()
+    
+    func resetPageNumber()
 }

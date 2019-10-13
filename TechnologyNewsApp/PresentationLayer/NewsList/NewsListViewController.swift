@@ -13,7 +13,10 @@ class NewsListViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var loadingLabel: UILabel!
+    
+    // MARK: Properties
+    private let refreshControl = UIRefreshControl()
+    private var isFirstLaunch = true
     
     // MARK: Injections
     var tableViewManager: NewsListTableViewManager!
@@ -22,12 +25,6 @@ class NewsListViewController: UIViewController {
     // MARK: Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
-        tableViewManager = NewsListTableViewManager(tableView: tableView)
-        presenter = NewsListPresenter(view: self)
-        
-        presenter.fetchNewsList()
         
         tableView.addInfiniteScroll { [unowned self] (tableView) -> Void in
             // update table view
@@ -41,6 +38,34 @@ class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableViewManager = NewsListTableViewManager(tableView: tableView, router: self)
+        presenter = NewsListPresenter(view: self)
+        
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresNewsData(_:)), for: .valueChanged)
+        
+        if isFirstLaunch {
+            presenter.fetchNewsList()
+            isFirstLaunch = false
+        }
+    }
+    
+    @objc private func refresNewsData(_ sender: Any) {
+        presenter.resetPageNumber()
+        presenter.fetchNewsList()
+        refreshControl.endRefreshing()
+    }
+}
+
+extension NewsListViewController: NewsListRouterProtocol {
+    func openNewsDescription(byIndex index: Int) {
+        let news = presenter.fetchNews(byIndex: index)
+        
+        let newsDescriptionViewController = NewsDescriptionViewController.instantiate()
+        newsDescriptionViewController.model = news
+        
+        navigationController?.pushViewController(newsDescriptionViewController, animated: true)
     }
 }
 
@@ -48,26 +73,14 @@ extension NewsListViewController: NewsListViewProtocol {
     func activityIndicator(active: Bool) {
         if active {
             activityIndicator.startAnimating()
-            loadingLabel.isHidden = false
+            tableView.isUserInteractionEnabled = false
         } else {
             activityIndicator.stopAnimating()
-            loadingLabel.isHidden = true
+            tableView.isUserInteractionEnabled = true
         }
-    }
-    
-    func tableVisibility(isHidden: Bool) {
-        tableView.isHidden = isHidden
     }
     
     func addRows(viewModels: [NewsPreviewViewModel]?) {
         self.tableViewManager.addRows(viewModels: viewModels)
-    }
-    
-    func updateTable(viewModels: [NewsPreviewViewModel]?) {
-//        guard let unwrappedViewModel = viewModels else {
-//            self.tableViewManager.configure(viewModels: [])
-//            return
-//        }
-//        self.tableViewManager.configure(viewModels: unwrappedViewModel)
     }
 }

@@ -31,6 +31,8 @@ class NewsService: NewsServiceProtocol {
         
         if let url = urlComponents?.url {
             urlSessionManager.resumeDataTask(url: url, success: { [unowned self] (responseObject: PostListResponseModel?) in
+                
+                self.coreDataRepository.removeAllRecords()
                 if let responseObject = responseObject {
                     responseObject.posts.forEach({ [unowned self] (postResponseModel) in
                         
@@ -53,6 +55,7 @@ class NewsService: NewsServiceProtocol {
                         failure(unwrappedError)
                     })
                 }
+            
             }) { (error) in
                 guard let unwrappedError = error else { return }
                 failure(unwrappedError)

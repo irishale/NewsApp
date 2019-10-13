@@ -9,8 +9,6 @@
 import Foundation
 
 protocol NewsListViewProtocol: class {
-    func updateTable(viewModels: [NewsPreviewViewModel]?)
     func addRows(viewModels: [NewsPreviewViewModel]?)
     func activityIndicator(active: Bool)
-    func tableVisibility(isHidden: Bool)
 }

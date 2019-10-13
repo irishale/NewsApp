@@ -30,6 +30,26 @@ final class CoreDataRepository<GenericEntity: NSManagedObject & ConfigurableEnti
         return entities
     }
     
+    func removeAllRecords() {
+        let entityDescription = NSEntityDescription.entity(forEntityName: NSStringFromClass(GenericEntity.self), in: context)
+        
+        let request: NSFetchRequest<GenericEntity> = NSFetchRequest()
+        request.entity = entityDescription
+        request.includesPropertyValues = false
+        
+        do {
+            let entities = try context.fetch(request)
+
+            for entity in entities {
+                entity.mr_deleteEntity()
+                print(entity)
+            }
+
+        } catch {
+            print("Failed to remove")
+        }
+    }
+    
     func fetchByPage(page: Int) -> [GenericEntity] {
         let limit = 20
         let offset = page*limit

@@ -19,6 +19,7 @@ public class NewsEntity: NSManagedObject, ConfigurableEntityProtocol {
         self.content = modelUnwrap.text
         self.publishedDate = modelUnwrap.published as NSDate?
         self.title = modelUnwrap.title
+        self.image = modelUnwrap.imageData as NSData?
 
         return true
     }

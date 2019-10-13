@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News Description View Controller-->
+        <scene sceneID="gEy-2s-BPs">
+            <objects>
+                <viewController storyboardIdentifier="NewsDescriptionViewController" id="fdc-sa-EsG" customClass="NewsDescriptionViewController" customModule="TechnologyNewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="53w-xn-fFo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CeI-Nt-yhm">
+                                <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="CMt-bm-cAm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2n-MV-yfY">
+                                <rect key="frame" x="12" y="252" width="390" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mhd-yx-hSK">
+                                <rect key="frame" x="12" y="280.5" width="390" height="581.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x2n-MV-yfY" firstAttribute="leading" secondItem="F9K-Cz-148" secondAttribute="leading" constant="12" id="8Lh-RS-1QN"/>
+                            <constraint firstItem="F9K-Cz-148" firstAttribute="trailing" secondItem="mhd-yx-hSK" secondAttribute="trailing" constant="12" id="9I0-DL-fiJ"/>
+                            <constraint firstItem="F9K-Cz-148" firstAttribute="trailing" secondItem="x2n-MV-yfY" secondAttribute="trailing" constant="12" id="BDT-mS-Tkb"/>
+                            <constraint firstItem="CeI-Nt-yhm" firstAttribute="leading" secondItem="F9K-Cz-148" secondAttribute="leading" id="E63-tk-seW"/>
+                            <constraint firstItem="mhd-yx-hSK" firstAttribute="top" secondItem="x2n-MV-yfY" secondAttribute="bottom" constant="8" id="Ivq-4j-vc5"/>
+                            <constraint firstItem="F9K-Cz-148" firstAttribute="bottom" secondItem="mhd-yx-hSK" secondAttribute="bottom" id="RIq-4m-MeD"/>
+                            <constraint firstItem="x2n-MV-yfY" firstAttribute="top" secondItem="CeI-Nt-yhm" secondAttribute="bottom" constant="8" id="U4r-st-bcs"/>
+                            <constraint firstItem="mhd-yx-hSK" firstAttribute="leading" secondItem="F9K-Cz-148" secondAttribute="leading" constant="12" id="ZTm-9Y-Ov8"/>
+                            <constraint firstItem="CeI-Nt-yhm" firstAttribute="trailing" secondItem="F9K-Cz-148" secondAttribute="trailing" id="dLT-QE-iay"/>
+                            <constraint firstItem="CeI-Nt-yhm" firstAttribute="top" secondItem="F9K-Cz-148" secondAttribute="top" id="ofz-wK-dnw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="F9K-Cz-148"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="CeI-Nt-yhm" id="hK5-hS-Kva"/>
+                        <outlet property="imageViewHeightConstraint" destination="CMt-bm-cAm" id="LDa-6g-JqR"/>
+                        <outlet property="newsDescriptionTextView" destination="mhd-yx-hSK" id="4VI-FW-O9T"/>
+                        <outlet property="newsTitleLabel" destination="x2n-MV-yfY" id="pzZ-6A-rRK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yqe-gm-Z4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-52.173913043478265" y="90.401785714285708"/>
+        </scene>
+    </scenes>
+</document>

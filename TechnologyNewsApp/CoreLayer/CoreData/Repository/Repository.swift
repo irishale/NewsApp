@@ -31,4 +31,6 @@ protocol Repository {
     func update(withModel model: Model) -> Entity?
     
     func deleteById(objectId: String?) -> Bool
+    
+    func removeAllRecords()
 }

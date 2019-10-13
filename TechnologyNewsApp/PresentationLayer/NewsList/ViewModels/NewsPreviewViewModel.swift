@@ -9,6 +9,7 @@
 import Foundation
 
 struct NewsPreviewViewModel {
+    let objectId: String?
     let title: String
     let date: String
     let author: String

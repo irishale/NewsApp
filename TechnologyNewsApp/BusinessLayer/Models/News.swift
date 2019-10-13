@@ -37,6 +37,7 @@ class News: IdentityModelProtocol {
     }
     
     init(withEntity entity: NewsEntity) {
+        objectId = entity.objectID.uriRepresentation().absoluteString
         title = entity.title ?? ""
         published  = entity.publishedDate as Date?
         author = entity.author ?? ""

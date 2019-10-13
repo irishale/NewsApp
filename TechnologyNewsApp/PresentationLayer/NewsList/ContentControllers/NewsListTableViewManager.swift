@@ -18,8 +18,12 @@ class NewsListTableViewManager: NSObject {
     var tableView: UITableView!
     private var viewModels: [NewsPreviewViewModel]? = []
     
-    init(tableView: UITableView) {
+    // MARK: Injections
+    var router: NewsListRouterProtocol?
+    
+    init(tableView: UITableView, router: NewsListRouterProtocol) {
         self.tableView = tableView
+        self.router = router
         
         super.init()
         
@@ -94,5 +98,9 @@ extension NewsListTableViewManager: UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.openNewsDescription(byIndex: indexPath.row)
     }
 }
